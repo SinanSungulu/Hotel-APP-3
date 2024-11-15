@@ -1,0 +1,142 @@
+#header {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    padding: 30px 0;
+    font-family: nav;
+    flex-wrap: wrap;
+}
+label + input {
+    display: none;
+}
+#logo {
+    flex: 0 0 30%;
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 0 20px;
+    & span {
+        margin: 0 auto;
+        font-size: 1.5rem;
+        color: #73502e;
+        transform: translateY(-15px);
+        text-transform: uppercase;
+        width: 100px;
+    }
+}
+#top-nav {
+    flex: 0 0 70%;
+    height: 120%;
+    margin-left: auto;
+}
+#top-nav ul {
+    display: flex;
+    align-items: end;
+    width: 70%;
+    margin-left: auto;
+    height: 100%;
+    justify-content: space-evenly;
+}
+#top-nav ul li a {
+    font-size: 1.3rem;
+    position: relative;
+    padding: 0 20px;
+
+    &:nth-of-type(1):hover {
+        color: #73502e;
+
+    }
+    &::before {
+        content: attr(data-text);
+        position: absolute;
+        top: 0 ;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: .8s transform;
+        transform: rotateX(90deg) translateY(30px);
+        transform-origin: bottom;
+    }
+    &:hover::before {
+        transform: rotateX(0) translateY(0);
+        color: rgb(102, 16, 7);
+    }
+    &::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0 ;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: .8s transform;
+        transform: rotateX(0) translateY(0);
+        transform-origin: top;
+    }
+    &:hover::after {
+        transform: rotateX(-90deg) translateY(-20px);
+        color: rgb(226, 221, 222);
+    }
+}
+
+@media screen and (max-width: 700px) 
+{
+    * {
+    }
+    a {
+        &::before {
+            background-color: #73502e;
+        }
+        &::after {
+            background-color: #73502e;
+        }
+       
+    }
+    #header {
+        flex-direction: column;
+        position: relative;
+    }
+    #logo {
+        font-size: 2rem;
+        width: 10%;
+        & span {
+            font-size: 1.3rem;
+            text-align: center;
+        transform: translateY(-5px);
+
+        }
+
+    }
+    label {
+        width: fit-content;
+    }
+    label + input:checked + #top-nav {
+        transform: translateY(50%) ;
+
+    }
+    
+    #top-nav {
+        position: absolute;
+        transform: translateY(-250%);
+        transition: 1s all;
+        width: 100%;
+    }
+    #top-nav ul {
+        width: 100%;
+        height: auto;
+        background-color: #73502e;
+        flex-direction: column;
+        align-items: center;
+    }
+    #top-nav ul li{
+        padding: 5px;
+        width: 30%;
+        text-align: center;
+
+        &:nth-of-type(1) a i{
+            color: aliceblue;
+            position: relative;
+            z-index: 2;
+        }
+    }
+}
